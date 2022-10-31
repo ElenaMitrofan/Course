@@ -1,3 +1,8 @@
+import java.util.Arrays;
+import java.util.Comparator;
+
+import static java.lang.Double.min;
+
 public class Main {
     private static Employee[] employees = new Employee[10];
 
@@ -7,6 +12,7 @@ public class Main {
             employees[i - 1] = employee;
         }
         System.out.println(getAllInfo());
+        System.out.println(getEmployeeWithMinSalary());
     }
 
     public static String getAllInfo(){
@@ -17,4 +23,18 @@ public class Main {
         }
         return stringBuilder.toString();
     }
+
+    public static Employee getEmployeeWithMinSalary(){
+        double minSalary = Double.MAX_VALUE;
+        Employee minEmployee = null;
+        for (int i = 0; i < employees.length; i++){
+            Employee employee = employees[i];
+            double minSalaryNew = min(minSalary, employee.getSalary());
+            if (minSalaryNew != minSalary){
+                minEmployee = employee;
+                minSalary = minSalaryNew;
+            }
+
+        }
+        return minEmployee;}
 }
