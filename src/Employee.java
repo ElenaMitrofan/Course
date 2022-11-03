@@ -2,14 +2,13 @@ public class Employee {
     private final int id;
     private int department;
     private double salary;
+    private String fullName;
 
-    private String FIO;
-
-    public Employee(int department, double salary, String fio) {
+    public Employee(int department, double salary, String fullName) {
         this.id = SequenceManager.getNextSequence();
         this.department = department;
         this.salary = salary;
-        this.FIO = fio;
+        this.fullName = fullName;
     }
 
     public int getId() {
@@ -24,6 +23,10 @@ public class Employee {
         return salary;
     }
 
+    public String getFullName() {
+        return fullName;
+    }
+
     public void setDepartment(int department) {
         this.department = department;
     }
@@ -33,7 +36,7 @@ public class Employee {
 
     @Override
     public String toString(){
-        return FIO + " " + department +" "+ salary;
+        return String.format("%d. %s;  Номер отдела: %d; Зарплата: %.2f", id, fullName, department, salary);
 
     }
 
